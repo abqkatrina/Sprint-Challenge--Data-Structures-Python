@@ -25,7 +25,7 @@ class DLL:
         #make a new element
         new_el = Element(value)
         #add element to empty list
-        if self.heaf is None:
+        if self.head is None:
             self.head = new_el
             self.tail = new_el
             return
@@ -41,6 +41,7 @@ class DLL:
     def addlast(self, value):
         #make new element
         new_el = Element(value)
+        #add element to empty list
         if self.head is None:
             self.head = new_el
             self.tail = new_el
@@ -54,23 +55,40 @@ class DLL:
 
 #FIRST OUT
     def popfirst(self):
-        pass
+        self.delete(self.head)
 
 #LAST OUT
     def poplast(self):
-        pass
+        self.delete(self.tail)
 
 #mave to 0 pos
-    def move_to_first(self, node):
+    def move_to_first(self, elem):
         pass
 
 #move to end
-    def move_to_last(self, node):
+    def move_to_last(self, elem):
         pass
 
 #delete node (from middle)
-    def delete(self):
-        pass
+    def delete(self, elem):
+        #minus 1 from length
+        self.length -= 1
+        #if only element in list
+        if self.head is self.tail:
+            self.head = None
+            self.tail = None
+        #if element is head
+        elif elem is self.head:
+            self.head = elem.next
+            elem.delete()
+        #if element is tail
+        elif elem is self.tail:
+            self.tail = elem.prev
+            elem.delete()
+        #if regular element
+        else:
+            elem.delete()
+
 
 
 
