@@ -63,11 +63,23 @@ class DLL:
 
 #mave to 0 pos
     def move_to_first(self, elem):
-        pass
+        #if already head
+        if elem is self.head:
+            return
+        #make element new head
+        self.addfirst(elem)
+        #erase element from previous pos
+        self.delete(elem)
 
 #move to end
     def move_to_last(self, elem):
-        pass
+        #if already tail
+        if elem is self.tail:
+            return
+        #make element new tail
+        self.addlast(elem)
+        #erase element from prev pos
+        self.delete(elem)
 
 #delete node (from middle)
     def delete(self, elem):
