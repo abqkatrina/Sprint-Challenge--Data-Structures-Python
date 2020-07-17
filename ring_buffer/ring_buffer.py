@@ -148,18 +148,26 @@ class BufferQueue:
         #add to length
         self.length +=1
 
-        #if at capacity, move next to front
-        if self.length > self.capacity:
-            self.front = self.front.next
-
         #if queue is empty, make a front/rear item
         if self.front is None:
             self.front = new_item
             self.rear = new_item
             return
 
-        #make old front prev
-        self.front = new_item
+        #if queue not full, add to rear
+        # +d = abc -> abcd
+        if self.length < self.capacity:
+            self.rear = new_item
+            
+        #if at capacity, add new to front
+        # abcde -> fbcde AND abcdefghi -> fghie
+        #if add one to full, replace front with new
+        if self.length == self.capacity:
+            self.front = new_item
+        #if add many to full, move front to rear?
+
+        
+
     
 
 
